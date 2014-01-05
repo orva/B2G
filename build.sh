@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MAKE=${MAKE:-make}
+
 # We want to figure out if we need to re-run the firmware
 # extraction routine.  The first time we run build.sh, we
 # store the hash of important files.  On subsequent runs,
@@ -58,7 +60,7 @@ if [ -f patches/patch.sh ] ; then
     . patches/patch.sh
 fi &&
 configure_device &&
-time nice -n19 make $MAKE_FLAGS $@
+time nice -n19 $MAKE $MAKE_FLAGS $@
 
 ret=$?
 echo -ne \\a
